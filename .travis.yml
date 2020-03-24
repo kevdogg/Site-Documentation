@@ -1,0 +1,23 @@
+language: ruby
+cache: bundler
+before_install:
+#  - cd docs
+  - gem install bundler
+#before_script:
+#  - cd docs
+rvm:
+  - 2.5.3
+script:
+  - bundle exec jekyll build
+
+branches:
+  only:
+  - /.*/
+deploy:
+  provider: pages
+  cleanup: false
+  repo: kevdogg/Site-Documentation
+  token: $GITHUB_TOKEN
+  target_branch: master
+  on:
+    branch: master
